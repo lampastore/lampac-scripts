@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /home/lampac
 
+RUN apt-get remove -y dotnet* aspnet* netstandard* || true
+
 RUN curl -L -k -s https://raw.githubusercontent.com/lampastore/lampac-scripts/master/docker-install.sh | bash
 
 VOLUME /home/lampac/cache
