@@ -2,7 +2,7 @@
 
 # Configuration
 CONTAINER_NAME="lampac-local"
-IMAGE_NAME="mylampac:final"
+IMAGE_NAME="mylampac:local"
 DOCKERFILE_URL="https://raw.githubusercontent.com/lampastore/lampac-scripts/master/Dockerfile"
 DEST=$(pwd)
 
