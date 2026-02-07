@@ -47,6 +47,18 @@ cat <<EOF > $DEST/init.conf
 EOF
 fi
 
+get_external_ip() {
+   local ip
+   ip=$(curl -s --connect-timeout 5 https://api.ipify.org 2>/dev/null)
+   if [ -z "$ip" ]; then
+      ip=$(curl -s --connect-timeout 5 https://icanhazip.com 2>/dev/null)
+   fi
+   if [ -z "$ip" ]; then
+      ip=$(curl -s --connect-timeout 5 https://ifconfig.me 2>/dev/null)
+   fi
+   echo "${ip:-IP}"
+}
+
 # iptables drop
 cat <<EOF > iptables-drop.sh
 #!/bin/sh
