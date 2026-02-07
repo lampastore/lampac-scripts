@@ -17,7 +17,13 @@ echo "Preparing directories and config files..."
 mkdir -p "$DEST/cache"
 chmod -R 777 "$DEST/cache"
 
-# Create default init.conf if it doesn't exist (Lampac custom format)
+# If init.conf is accidentally a directory, remove it
+if [ -d "$DEST/init.conf" ]; then
+    echo "Warning: init.conf is a directory. Removing it to create a file."
+    rm -rf "$DEST/init.conf"
+fi
+
+# Create default init.conf if it doesn't exist
 if [ ! -f "$DEST/init.conf" ]; then
     echo "Creating default init.conf..."
 cat <<EOF > "$DEST/init.conf"
