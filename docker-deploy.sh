@@ -33,7 +33,7 @@ fi
 
 # 4. Build the image
 echo "Building Docker image: $IMAGE_NAME..."
-docker build -t $IMAGE_NAME .
+docker build --no-cache -t $IMAGE_NAME .
 
 # 5. Run the container
 echo "Launching container..."
